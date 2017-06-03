@@ -1,0 +1,4 @@
+localhost
+mydata
+root
+root
