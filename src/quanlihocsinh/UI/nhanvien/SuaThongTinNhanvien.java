@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import quanlihocsinh.Obj.User;
 import quanlihocsinh.UI.Main;
 
 /**
@@ -23,11 +25,24 @@ public class SuaThongTinNhanvien extends javax.swing.JPanel {
     /**
      * Creates new form SuaThongTinNhanvien
      */
-    private QuanLiNhanVien parentPanel;
     
-    public SuaThongTinNhanvien(QuanLiNhanVien parentPanel) {
-        this.parentPanel = parentPanel;
+    public SuaThongTinNhanvien() {
         initComponents();
+        try {
+            Connection connection = Main.sqlConnection.getConnection();
+            Statement statement = connection.createStatement();
+            
+            // lay danh sach chuc vu
+            ResultSet rs = statement.executeQuery("SELECT TenChucVu FROM CHUCVU");
+            while(rs.next())
+                typeField.addItem(rs.getString(1));
+            
+            rs.close();
+            connection.close();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(SuaThongTinNhanvien.class.getName()).log(Level.SEVERE, null, ex);
+            Main.sqlConnection.closeAllConnection();
+        }
     }
 
     /**
@@ -43,13 +58,14 @@ public class SuaThongTinNhanvien extends javax.swing.JPanel {
         typeField = new javax.swing.JComboBox<>();
         usernameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
-        submitButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         idField = new javax.swing.JTextField();
+        cancelButton = new javax.swing.JButton();
 
         nameField.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         nameField.setForeground(new java.awt.Color(0, 51, 255));
@@ -62,12 +78,13 @@ public class SuaThongTinNhanvien extends javax.swing.JPanel {
 
         passwordField.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         passwordField.setForeground(new java.awt.Color(0, 0, 255));
+        passwordField.setToolTipText("để trống nếu không thay đổi");
 
-        submitButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        submitButton.setText("Lưu");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        saveButton.setText("Lưu");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
 
@@ -89,6 +106,14 @@ public class SuaThongTinNhanvien extends javax.swing.JPanel {
         idField.setEditable(false);
         idField.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         idField.setForeground(new java.awt.Color(0, 51, 255));
+
+        cancelButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cancelButton.setText("Hủy");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -113,7 +138,10 @@ public class SuaThongTinNhanvien extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(submitButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(saveButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelButton)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,41 +163,131 @@ public class SuaThongTinNhanvien extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(typeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(submitButton))
+                    .addComponent(saveButton)
+                    .addComponent(cancelButton))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        String id = idField.getText();
+        String name = nameField.getText();
+        String staffType = typeField.getSelectedItem().toString();
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
         
-    }//GEN-LAST:event_submitButtonActionPerformed
+        try {
+            Connection connection = Main.sqlConnection.getConnection();
+            Statement statement = connection.createStatement();
+            if(!checkForm(statement)) {
+                connection.close();
+                return;
+            }
+            
+            // lay ma chuc vu
+            ResultSet rs = statement.executeQuery(
+                    "SELECT MaChucVu FROM CHUCVU WHERE TenChucVu='" + staffType + "'");
+            rs.first();
+            String staffTyeID = rs.getString(1);
+            rs.close();
 
-    private void initData() {
+            // ma hoa mat khau, tao chuoi doi mat khau cho truy van sql
+            String changePassword = "";
+            if(!password.equals(""))
+                changePassword = ", MatKhau='" + User.getMD5(password) + "'";
+
+            // tao cau truy van
+            String sql = "UPDATE NHANVIEN SET TenNhanVien='" + name + "',"
+                    + " MaChucVu='" + staffTyeID + "',"
+                    + " TenDangNhap='" + username + "'"
+                    + changePassword
+                    + "WHERE MaNhanVien='" + id + "'";
+
+            statement.executeUpdate(sql);
+            QuanLiNhanVien.showOnTable(statement);
+            connection.close();
+            JOptionPane.showMessageDialog(this, "Đã lưu thành công!");
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(SuaThongTinNhanvien.class.getName()).log(Level.SEVERE, null, ex);
+            Main.sqlConnection.closeAllConnection();
+            JOptionPane.showMessageDialog(this, "Có lỗi xảy ra!");
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        loadData();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    public void loadData() {
         String id = QuanLiNhanVien.getSelectedStaffID();
+        if(id.equals(""))
+            return;
         try {
             Connection connection = Main.sqlConnection.getConnection();
             Statement statement = connection.createStatement();
             
             ResultSet rs = statement.executeQuery(
-                    "SELECT NV.MaNhanVien, TenNhanVien, TenChucVu, TenDangNhap "
-                    + " FROM NHANVIEN NV JOINT CHUCVU CV ON NV.MaChucVu=CV.MaChucVu"
-                    + " WHERE MANHANVIEN='" + id + "')"
+                    "SELECT NV.MaNhanVien, TenNhanVien, TenChucVu, TenDangNhap"
+                    + " FROM NHANVIEN NV JOIN CHUCVU CV ON NV.MaChucVu=CV.MaChucVu"
+                    + " WHERE NV.MaNhanVien='" + id + "'"
             );
             
+            rs.first();
             idField.setText(rs.getString(1));
             nameField.setText(rs.getString(2));
+            
+            String staffType = rs.getString(3);
+            for(int i = 0; i < typeField.getItemCount(); i++)
+                if(typeField.getItemAt(i).equals(staffType)) {
+                    typeField.setSelectedIndex(i);
+                    break;
+                }
             
             usernameField.setText(rs.getString(4));
             passwordField.setText("");
             
+            rs.close();
             connection.close();
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(SuaThongTinNhanvien.class.getName()).log(Level.SEVERE, null, ex);
             Main.sqlConnection.closeAllConnection();
         }
     }
+    
+    private boolean checkForm(Statement statement) throws SQLException {
+        String id = idField.getText();
+        String name = nameField.getText();
+        String staffType = typeField.getSelectedItem().toString();
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+        
+        if(name.equals("")) {
+            JOptionPane.showMessageDialog(this, "Tên nhân viên không được để trống!");
+            return false;
+        }
+        
+        if(username.equals("")) {
+            JOptionPane.showMessageDialog(this, "Tên tài khoản không được để trống!");
+            return false;
+        }
+        
+        // kiem tra xem ten tai khoan da ton tai chua
+        ResultSet rs = statement.executeQuery(
+                "SELECT * FROM NHANVIEN WHERE TenDangNhap='" + username + "'");
+        rs.last();
+        int row = rs.getRow();
+        rs.close();
+        
+        if(row > 0) {
+            JOptionPane.showMessageDialog(this, "Tên tài khoản đã được sử dụng! Vui lòng chọn tên khác!");
+            return false;
+        }
+
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -178,7 +296,7 @@ public class SuaThongTinNhanvien extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField nameField;
     private javax.swing.JPasswordField passwordField;
-    private javax.swing.JButton submitButton;
+    private javax.swing.JButton saveButton;
     private javax.swing.JComboBox<String> typeField;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables

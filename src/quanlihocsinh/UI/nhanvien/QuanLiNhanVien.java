@@ -14,6 +14,8 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import quanlihocsinh.UI.Main;
 
@@ -31,6 +33,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     public QuanLiNhanVien() {
         initComponents();
         initData();
+        addItemChange(); // them su kien chon dong tren bang
     }
 
     /**
@@ -50,6 +53,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         changeInfoButton = new javax.swing.JButton();
         editPanel = new javax.swing.JPanel();
         themNhanVien = new quanlihocsinh.UI.nhanvien.ThemNhanVien();
+        suaThongTinNhanvien = new quanlihocsinh.UI.nhanvien.SuaThongTinNhanvien();
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel1.setText("Quản Lí Nhân Viên");
@@ -90,6 +94,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
         editPanel.setLayout(new java.awt.CardLayout());
         editPanel.add(themNhanVien, "cardThemNhanVien");
+        editPanel.add(suaThongTinNhanvien, "cardSuaThongTinNhanVien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,7 +110,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(editPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,7 +154,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         String staffName = table.getValueAt(selectedRow, 2).toString();
         
         int reply = JOptionPane.showConfirmDialog(this, 
-                "Bạn có chắc chắn muốn xóa nhân viên \"" + staffName + "\" không?",
+                "Bạn có chắc chắn muốn xóa nhân viên \"" + staffName + "\" không?\n Các lớp học do nhân viên này giảng dạy cũng sẽ bị xóa!",
                 "Xóa nhân viên",
                 JOptionPane.YES_NO_OPTION
         );
@@ -157,6 +162,10 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
             try {
                 Connection connection = Main.sqlConnection.getConnection();
                 Statement statement = connection.createStatement();
+                
+                // xoa cac mon hoc ma nhan vien giang day
+                statement.executeUpdate(
+                        "DELETE FROM GIANGDAY WHERE MaGiaoVien='" + staffID + "'");
                 
                 // xoa nhan vien
                 statement.executeUpdate(
@@ -185,9 +194,19 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         }
         
         editPanel.setVisible(true);
-        ((CardLayout)editPanel.getLayout()).show(editPanel, "cardThemNhanVien");
+        ((CardLayout)editPanel.getLayout()).show(editPanel, "cardSuaThongTinNhanVien");
+        suaThongTinNhanvien.loadData();
     }//GEN-LAST:event_changeInfoButtonActionPerformed
 
+    private void addItemChange() {
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                 editPanel.setVisible(false);
+            }
+        });
+    }
+    
     private void initData() {
         try {
             Connection connection = Main.sqlConnection.getConnection();
@@ -233,6 +252,8 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     }
     
     public static String getSelectedStaffID() {
+        if(table.getSelectedRow() < 0)
+            return "";
         String id = table.getValueAt(table.getSelectedRow(), 1).toString();
         return id;
     }
@@ -244,6 +265,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     private static javax.swing.JPanel editPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private quanlihocsinh.UI.nhanvien.SuaThongTinNhanvien suaThongTinNhanvien;
     private static javax.swing.JTable table;
     private quanlihocsinh.UI.nhanvien.ThemNhanVien themNhanVien;
     // End of variables declaration//GEN-END:variables

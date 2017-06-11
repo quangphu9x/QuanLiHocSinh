@@ -48,17 +48,18 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         gradeComboBox = new javax.swing.JComboBox<>();
         classComboBox = new javax.swing.JComboBox<>();
         subjectComboBox = new javax.swing.JComboBox<>();
         semesterComboBox = new javax.swing.JComboBox<>();
-        cancelButton = new javax.swing.JButton();
-        saveButton = new javax.swing.JButton();
         openButton = new javax.swing.JButton();
+        panel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        saveButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setText("Lớp:");
@@ -68,17 +69,6 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel3.setText("Học Kì:");
-
-        table.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "STT", "Mã Học Sinh", "Họ Tên", "Điểm miệng", "Điểm 15'", "Điểm 1 tiết", "Điểm Cuối Kì", "Điểm TB"
-            }
-        ));
-        jScrollPane1.setViewportView(table);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Nhập Bảng Điểm Môn");
@@ -94,25 +84,24 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
         });
 
         classComboBox.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        subjectComboBox.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        semesterComboBox.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        semesterComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
-
-        cancelButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cancelButton.setText("Hủy");
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
+        classComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                classComboBoxItemStateChanged(evt);
             }
         });
 
-        saveButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        saveButton.setText("Lưu");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
+        subjectComboBox.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        subjectComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                subjectComboBoxItemStateChanged(evt);
+            }
+        });
+
+        semesterComboBox.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        semesterComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+        semesterComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                semesterComboBoxItemStateChanged(evt);
             }
         });
 
@@ -123,6 +112,59 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
                 openButtonActionPerformed(evt);
             }
         });
+
+        table.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "STT", "Mã Học Sinh", "Họ Tên", "Điểm miệng", "Điểm 15'", "Điểm 1 tiết", "Điểm Cuối Kì", "Điểm TB"
+            }
+        ));
+        jScrollPane1.setViewportView(table);
+
+        saveButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        saveButton.setText("Lưu");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        cancelButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cancelButton.setText("Hủy");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(saveButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancelButton)
+                .addGap(21, 21, 21))
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveButton)
+                    .addComponent(cancelButton)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -158,17 +200,11 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(openButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))))))
-                        .addGap(0, 349, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 278, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(saveButton)
-                .addGap(18, 18, 18)
-                .addComponent(cancelButton)
-                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,17 +228,14 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
                     .addComponent(semesterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(openButton)
-                .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveButton)
-                    .addComponent(cancelButton))
-                .addContainerGap())
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void gradeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_gradeComboBoxItemStateChanged
+        panel.setVisible(false);
         if(evt.getStateChange() == 2) // item deselected
             return;
         try {
@@ -345,7 +378,20 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
         } 
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    private void classComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classComboBoxItemStateChanged
+        panel.setVisible(false);
+    }//GEN-LAST:event_classComboBoxItemStateChanged
+
+    private void subjectComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_subjectComboBoxItemStateChanged
+        panel.setVisible(false);
+    }//GEN-LAST:event_subjectComboBoxItemStateChanged
+
+    private void semesterComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_semesterComboBoxItemStateChanged
+        panel.setVisible(false);
+    }//GEN-LAST:event_semesterComboBoxItemStateChanged
+
     public void initData() {
+        panel.setVisible(false);
         try {
             Connection connection = Main.sqlConnection.getConnection();
             Statement statement = connection.createStatement();
@@ -422,6 +468,7 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
     private void showOnTable() {
         tableModel = new TranscriptTableModel(transcripts);
         table.setModel(tableModel);
+        panel.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -435,6 +482,7 @@ public class NhapBangDiemMon extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton openButton;
+    private javax.swing.JPanel panel;
     private javax.swing.JButton saveButton;
     private javax.swing.JComboBox<String> semesterComboBox;
     private javax.swing.JComboBox<String> subjectComboBox;

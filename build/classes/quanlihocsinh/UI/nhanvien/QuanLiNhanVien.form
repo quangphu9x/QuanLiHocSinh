@@ -27,7 +27,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="editPanel" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" pref="610" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="addButton" min="-2" pref="80" max="-2" attributes="0"/>
@@ -141,6 +141,13 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="cardThemNhanVien"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="quanlihocsinh.UI.nhanvien.SuaThongTinNhanvien" name="suaThongTinNhanvien">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="cardSuaThongTinNhanVien"/>
             </Constraint>
           </Constraints>
         </Component>
