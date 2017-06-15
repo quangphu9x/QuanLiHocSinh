@@ -5,6 +5,8 @@
  */
 package quanlihocsinh.UI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DELL
@@ -26,6 +28,7 @@ public class Menu extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         tiepNhanButton = new javax.swing.JButton();
         lapDanhSachButton = new javax.swing.JButton();
@@ -35,7 +38,7 @@ public class Menu extends javax.swing.JPanel {
         baoCaoTongKetHocKiButton = new javax.swing.JButton();
         thayDoiQuyDinhButton = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new java.awt.GridBagLayout());
 
         tiepNhanButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         tiepNhanButton.setText("Tiếp nhận học sinh");
@@ -44,7 +47,13 @@ public class Menu extends javax.swing.JPanel {
                 tiepNhanButtonActionPerformed(evt);
             }
         });
-        add(tiepNhanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 70, 187, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(70, 59, 0, 0);
+        add(tiepNhanButton, gridBagConstraints);
 
         lapDanhSachButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lapDanhSachButton.setText("Lập danh sách lớp");
@@ -53,7 +62,13 @@ public class Menu extends javax.swing.JPanel {
                 lapDanhSachButtonActionPerformed(evt);
             }
         });
-        add(lapDanhSachButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 150, 187, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 22;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(49, 59, 0, 0);
+        add(lapDanhSachButton, gridBagConstraints);
 
         traCuuButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         traCuuButton.setText("Tra cứu học sinh");
@@ -62,7 +77,13 @@ public class Menu extends javax.swing.JPanel {
                 traCuuButtonActionPerformed(evt);
             }
         });
-        add(traCuuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 235, 187, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 32;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 59, 0, 0);
+        add(traCuuButton, gridBagConstraints);
 
         nhapBangDiemMonButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         nhapBangDiemMonButton.setText("Nhập bảng điểm môn");
@@ -71,7 +92,13 @@ public class Menu extends javax.swing.JPanel {
                 nhapBangDiemMonButtonActionPerformed(evt);
             }
         });
-        add(nhapBangDiemMonButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(64, 60, 81, 0);
+        add(nhapBangDiemMonButton, gridBagConstraints);
 
         baoCaoTongKetMonButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         baoCaoTongKetMonButton.setText("Báo cáo tổng kết môn");
@@ -80,7 +107,13 @@ public class Menu extends javax.swing.JPanel {
                 baoCaoTongKetMonButtonActionPerformed(evt);
             }
         });
-        add(baoCaoTongKetMonButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 70, 203, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(70, 151, 0, 74);
+        add(baoCaoTongKetMonButton, gridBagConstraints);
 
         baoCaoTongKetHocKiButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         baoCaoTongKetHocKiButton.setText("Báo cáo tổng kết học kì");
@@ -89,7 +122,12 @@ public class Menu extends javax.swing.JPanel {
                 baoCaoTongKetHocKiButtonActionPerformed(evt);
             }
         });
-        add(baoCaoTongKetHocKiButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 150, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(49, 151, 0, 74);
+        add(baoCaoTongKetHocKiButton, gridBagConstraints);
 
         thayDoiQuyDinhButton.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         thayDoiQuyDinhButton.setText("Thay đổi quy định");
@@ -98,14 +136,24 @@ public class Menu extends javax.swing.JPanel {
                 thayDoiQuyDinhButtonActionPerformed(evt);
             }
         });
-        add(thayDoiQuyDinhButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 235, 203, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 38;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 151, 0, 74);
+        add(thayDoiQuyDinhButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tiepNhanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiepNhanButtonActionPerformed
+        if(!checkAdmin())
+            return;
         Main.showPanel("cardTiepNhan");
     }//GEN-LAST:event_tiepNhanButtonActionPerformed
 
     private void lapDanhSachButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lapDanhSachButtonActionPerformed
+        if(!checkAdmin())
+            return;
         Main.showPanel("cardLapDanhSach");
     }//GEN-LAST:event_lapDanhSachButtonActionPerformed
 
@@ -126,9 +174,18 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_baoCaoTongKetMonButtonActionPerformed
 
     private void thayDoiQuyDinhButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thayDoiQuyDinhButtonActionPerformed
+        if(!checkAdmin())
+            return;
         Main.showPanel("cardCaiDat");
     }//GEN-LAST:event_thayDoiQuyDinhButtonActionPerformed
-
+    
+    private boolean checkAdmin() {
+        if(!Main.user.getStaffType().equals("CV001")) {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho admin!");
+            return false;
+        }
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton baoCaoTongKetHocKiButton;

@@ -68,24 +68,39 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(table);
 
+        addButton.setBackground(new java.awt.Color(102, 204, 255));
         addButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/new1.png"))); // NOI18N
         addButton.setText("Thêm");
+        addButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 2, true));
+        addButton.setContentAreaFilled(false);
+        addButton.setOpaque(true);
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
             }
         });
 
+        deleteButton.setBackground(new java.awt.Color(102, 204, 255));
         deleteButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
         deleteButton.setText("Xóa");
+        deleteButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 2, true));
+        deleteButton.setContentAreaFilled(false);
+        deleteButton.setOpaque(true);
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
             }
         });
 
+        changeInfoButton.setBackground(new java.awt.Color(102, 204, 255));
         changeInfoButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        changeInfoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit1.png"))); // NOI18N
         changeInfoButton.setText("Sửa");
+        changeInfoButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 51), 2, true));
+        changeInfoButton.setContentAreaFilled(false);
+        changeInfoButton.setOpaque(true);
         changeInfoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changeInfoButtonActionPerformed(evt);
@@ -114,10 +129,11 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(changeInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(changeInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

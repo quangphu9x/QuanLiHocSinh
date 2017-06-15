@@ -57,6 +57,7 @@ public class Main extends javax.swing.JFrame {
         quanLiNhanVien = new quanlihocsinh.UI.nhanvien.QuanLiNhanVien();
         phanCongGiangDay = new quanlihocsinh.UI.nhanvien.PhanCongGiangDay();
         xepGVCN = new quanlihocsinh.UI.nhanvien.XepGVCN();
+        quanLiLopHoc = new quanlihocsinh.UI.QuanLiLopHoc();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         SQLSettingMenu = new javax.swing.JMenuItem();
@@ -66,15 +67,20 @@ public class Main extends javax.swing.JFrame {
         lapDanhSachLopMenu = new javax.swing.JMenuItem();
         traCuuMenu = new javax.swing.JMenuItem();
         nhapBangDiemMenu = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        menuBaoCaoTongKetMon = new javax.swing.JMenuItem();
-        menuBaoCaoTongKetHocKi = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         subjectManagerMenuItem = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        classManagementMenu = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         quanLiNhanVienMeneuItem = new javax.swing.JMenuItem();
         phanCongGiangDayMenuItem = new javax.swing.JMenuItem();
         giaoVienChuNhiemMenuItem = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        menuBaoCaoTongKetMon = new javax.swing.JMenuItem();
+        menuBaoCaoTongKetHocKi = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        loginMenu = new javax.swing.JMenuItem();
+        logoutMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +99,7 @@ public class Main extends javax.swing.JFrame {
         mainPanel.add(quanLiNhanVien, "cardQuanLiNhanVien");
         mainPanel.add(phanCongGiangDay, "cardPhanCongGiangDay");
         mainPanel.add(xepGVCN, "cardXepGVCN");
+        mainPanel.add(quanLiLopHoc, "cardQuanLiLopHoc");
 
         jMenu1.setText("Cài đặt");
 
@@ -158,28 +165,6 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Tổng kết");
-
-        menuBaoCaoTongKetMon.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        menuBaoCaoTongKetMon.setText("Báo cáo tổng kết môn");
-        menuBaoCaoTongKetMon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuBaoCaoTongKetMonActionPerformed(evt);
-            }
-        });
-        jMenu5.add(menuBaoCaoTongKetMon);
-
-        menuBaoCaoTongKetHocKi.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        menuBaoCaoTongKetHocKi.setText("Báo cáo tổng kết học kì");
-        menuBaoCaoTongKetHocKi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuBaoCaoTongKetHocKiActionPerformed(evt);
-            }
-        });
-        jMenu5.add(menuBaoCaoTongKetHocKi);
-
-        jMenuBar1.add(jMenu5);
-
         jMenu2.setText("Môn học");
 
         subjectManagerMenuItem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -192,6 +177,19 @@ public class Main extends javax.swing.JFrame {
         jMenu2.add(subjectManagerMenuItem);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu7.setText("Lớp học");
+
+        classManagementMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        classManagementMenu.setText("Quản lí lớp học");
+        classManagementMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classManagementMenuActionPerformed(evt);
+            }
+        });
+        jMenu7.add(classManagementMenu);
+
+        jMenuBar1.add(jMenu7);
 
         jMenu3.setText("Nhân viên");
 
@@ -224,6 +222,48 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu5.setText("Tổng kết");
+
+        menuBaoCaoTongKetMon.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        menuBaoCaoTongKetMon.setText("Báo cáo tổng kết môn");
+        menuBaoCaoTongKetMon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBaoCaoTongKetMonActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menuBaoCaoTongKetMon);
+
+        menuBaoCaoTongKetHocKi.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        menuBaoCaoTongKetHocKi.setText("Báo cáo tổng kết học kì");
+        menuBaoCaoTongKetHocKi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBaoCaoTongKetHocKiActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menuBaoCaoTongKetHocKi);
+
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Tài khoản");
+
+        loginMenu.setText("Đăng nhập");
+        loginMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginMenuActionPerformed(evt);
+            }
+        });
+        jMenu6.add(loginMenu);
+
+        logoutMenu.setText("Đăng xuất");
+        logoutMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutMenuActionPerformed(evt);
+            }
+        });
+        jMenu6.add(logoutMenu);
+
+        jMenuBar1.add(jMenu6);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,47 +292,62 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_SQLSettingMenuActionPerformed
 
     private void subjectManagerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectManagerMenuItemActionPerformed
-        if(!user.hasLoggedIn()) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa đăng nhập!");
+        if(!checkLogin())
             return;
-        }
+        if(!checkAdmin())
+            return;
         Main.showPanel("cardQuanLiMonHoc");
     }//GEN-LAST:event_subjectManagerMenuItemActionPerformed
 
     private void quanLiNhanVienMeneuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quanLiNhanVienMeneuItemActionPerformed
-        if(!user.hasLoggedIn()) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa đăng nhập!");
+        if(!checkLogin())
             return;
-        }
-        
-        if(!user.getStaffType().equals("CV001")) {
-            JOptionPane.showMessageDialog(this, "Bạn không được quyền truy cập chức năng này!");
+        if(!checkAdmin())
             return;
-        }
         showPanel("cardQuanLiNhanVien");
     }//GEN-LAST:event_quanLiNhanVienMeneuItemActionPerformed
 
     private void phanCongGiangDayMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phanCongGiangDayMenuItemActionPerformed
+        if(!checkLogin())
+            return;
+        if(!checkAdmin())
+            return;
         showPanel("cardPhanCongGiangDay");
     }//GEN-LAST:event_phanCongGiangDayMenuItemActionPerformed
 
     private void giaoVienChuNhiemMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giaoVienChuNhiemMenuItemActionPerformed
+        if(!checkLogin())
+            return;
+        if(!checkAdmin())
+            return;
         showPanel("cardXepGVCN");
     }//GEN-LAST:event_giaoVienChuNhiemMenuItemActionPerformed
 
     private void tiepNhanMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiepNhanMenuActionPerformed
+        if(!checkLogin())
+            return;
+        if(!checkAdmin())
+            return;
         showPanel("cardTiepNhan");
     }//GEN-LAST:event_tiepNhanMenuActionPerformed
 
     private void lapDanhSachLopMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lapDanhSachLopMenuActionPerformed
+        if(!checkLogin())
+            return;
+        if(!checkAdmin())
+            return;
         showPanel("cardLapDanhSach");
     }//GEN-LAST:event_lapDanhSachLopMenuActionPerformed
 
     private void traCuuMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_traCuuMenuActionPerformed
+        if(!checkLogin())
+            return;
         showPanel("cardTraCuuHocSinh");
     }//GEN-LAST:event_traCuuMenuActionPerformed
 
     private void nhapBangDiemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhapBangDiemMenuActionPerformed
+        if(!checkLogin())
+            return;
         showPanel("cardNhapBangDiemMon");
     }//GEN-LAST:event_nhapBangDiemMenuActionPerformed
 
@@ -305,9 +360,59 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_menuBaoCaoTongKetHocKiActionPerformed
 
     private void changeRegulationMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeRegulationMenuActionPerformed
+        if(!checkLogin())
+            return;
+        if(!checkAdmin())
+            return;
         showPanel("cardCaiDat");
     }//GEN-LAST:event_changeRegulationMenuActionPerformed
 
+    private void classManagementMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classManagementMenuActionPerformed
+        if(!checkLogin())
+            return;
+        if(!checkAdmin())
+            return;
+        showPanel("cardQuanLiLopHoc");
+    }//GEN-LAST:event_classManagementMenuActionPerformed
+
+    private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMenuActionPerformed
+        if(Main.user.hasLoggedIn()) {
+            JOptionPane.showMessageDialog(this, "Bạn đã đăng nhập!");
+            return;
+        }
+        showPanel("cardDangNhap");
+    }//GEN-LAST:event_loginMenuActionPerformed
+
+    private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuActionPerformed
+        if(!checkLogin())
+            return;
+        int reply = JOptionPane.showConfirmDialog(this,
+                "Bạn có muốn đăng xuất?",
+                "Đăng xuất",
+                JOptionPane.YES_NO_OPTION
+        );
+        if(reply == JOptionPane.YES_OPTION) {
+            Main.user.reset();
+            showPanel("cardDangNhap");
+        }
+    }//GEN-LAST:event_logoutMenuActionPerformed
+
+    private boolean checkLogin() {
+        if(!user.hasLoggedIn()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa đăng nhập!");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean checkAdmin() {
+        if(!user.getStaffType().equals("CV001")) {
+            JOptionPane.showMessageDialog(this, "Chức năng này chỉ dành cho admin!");
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -319,15 +424,11 @@ public class Main extends javax.swing.JFrame {
          */
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -344,6 +445,7 @@ public class Main extends javax.swing.JFrame {
     private quanlihocsinh.UI.BaoCaoTongKetMon baoCaoTongKetMonPanel;
     private quanlihocsinh.UI.CaiDat caiDatPanel;
     private javax.swing.JMenuItem changeRegulationMenu;
+    private javax.swing.JMenuItem classManagementMenu;
     private quanlihocsinh.UI.DangNhap dangNhapPanel;
     private javax.swing.JMenuItem giaoVienChuNhiemMenuItem;
     private javax.swing.JMenu jMenu1;
@@ -351,9 +453,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem lapDanhSachLopMenu;
     private quanlihocsinh.UI.LapDanhSach lapDanhSachPanel;
+    private javax.swing.JMenuItem loginMenu;
+    private javax.swing.JMenuItem logoutMenu;
     private static javax.swing.JPanel mainPanel;
     private javax.swing.JMenuItem menuBaoCaoTongKetHocKi;
     private javax.swing.JMenuItem menuBaoCaoTongKetMon;
@@ -362,6 +468,7 @@ public class Main extends javax.swing.JFrame {
     private quanlihocsinh.UI.NhapBangDiemMon nhapBangDiemMonPanel;
     private quanlihocsinh.UI.nhanvien.PhanCongGiangDay phanCongGiangDay;
     private javax.swing.JMenuItem phanCongGiangDayMenuItem;
+    private quanlihocsinh.UI.QuanLiLopHoc quanLiLopHoc;
     private quanlihocsinh.UI.QuanLiMonHoc quanLiMonHoc;
     private quanlihocsinh.UI.nhanvien.QuanLiNhanVien quanLiNhanVien;
     private javax.swing.JMenuItem quanLiNhanVienMeneuItem;
