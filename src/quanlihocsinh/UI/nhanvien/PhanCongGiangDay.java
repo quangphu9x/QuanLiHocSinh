@@ -180,6 +180,8 @@ public class PhanCongGiangDay extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gradeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_gradeComboBoxItemStateChanged
+        if(evt.getStateChange() == 2) // item deselected
+            return;
         String grade = gradeComboBox.getSelectedItem().toString();
         try {
             Connection connection = Main.sqlConnection.getConnection();
@@ -193,10 +195,14 @@ public class PhanCongGiangDay extends javax.swing.JPanel {
     }//GEN-LAST:event_gradeComboBoxItemStateChanged
 
     private void classComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classComboBoxItemStateChanged
+        if(evt.getStateChange() == 2) // item deselected
+            return;
         loadTableData();
     }//GEN-LAST:event_classComboBoxItemStateChanged
 
     private void semesterComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_semesterComboBoxItemStateChanged
+        if(evt.getStateChange() == 2) // item deselected
+            return;
         loadTableData();
     }//GEN-LAST:event_semesterComboBoxItemStateChanged
 
@@ -269,12 +275,13 @@ public class PhanCongGiangDay extends javax.swing.JPanel {
         loadTableData();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void initData() {
+    public void initData() {
         try {
             Connection connection = Main.sqlConnection.getConnection();
             Statement statement = connection.createStatement();
             
             // lay danh sach khoi
+            gradeComboBox.removeAllItems();
             ResultSet rs = statement.executeQuery("SELECT KhoiLop FROM KHOI");
             while(rs.next())
                 gradeComboBox.addItem(rs.getString(1));
@@ -297,7 +304,7 @@ public class PhanCongGiangDay extends javax.swing.JPanel {
         rs.close();
     }
     
-    private void loadTableData() {
+    public void loadTableData() {
         try {
             Connection connection = Main.sqlConnection.getConnection();
             Statement statement = connection.createStatement();

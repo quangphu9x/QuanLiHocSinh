@@ -196,6 +196,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
             }
             
         }
+        updateSystem();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -272,6 +273,10 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
             return "";
         String id = table.getValueAt(table.getSelectedRow(), 1).toString();
         return id;
+    }
+    
+    public static void updateSystem() {
+        Main.phanCongGiangDayPanel.loadTableData();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

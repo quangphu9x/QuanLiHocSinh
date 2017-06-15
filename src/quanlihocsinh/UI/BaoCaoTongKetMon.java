@@ -194,10 +194,11 @@ public class BaoCaoTongKetMon extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void initData() {
+    public void initData() {
         try {
             Connection connection = Main.sqlConnection.getConnection();
             // lay danh sach mon hoc
+            subjectComboBox.removeAllItems();
             ResultSet rs = connection.createStatement().executeQuery(
                     "SELECT TenMonHoc FROM MONHOC");
             while(rs.next())

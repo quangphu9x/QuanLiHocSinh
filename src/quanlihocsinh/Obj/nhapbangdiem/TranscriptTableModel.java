@@ -16,9 +16,11 @@ import quanlihocsinh.Obj.Transcript;
 public class TranscriptTableModel extends AbstractTableModel {
     private ArrayList<Transcript> transcripts;
     private String[] headers;
+    private static boolean editable;
     
     public TranscriptTableModel(ArrayList<Transcript> transcripts) {
         this.transcripts = transcripts;
+        editable = true;
         headers = new String[] {"STT", "Mã Học Sinh", "Họ Tên", "Điểm Miệng",
                     "Điểm 15'", "Điểm 1 Tiết", "Điểm Cuối Kì", "Điểm Trung Bình"};
     }
@@ -72,7 +74,6 @@ public class TranscriptTableModel extends AbstractTableModel {
                     break;
         }
         fireTableCellUpdated(row, column);
-        System.out.println("Changed !");
     }
     
     @Override
@@ -84,9 +85,15 @@ public class TranscriptTableModel extends AbstractTableModel {
     
     @Override
     public boolean isCellEditable(int row, int column) {
+        if(!editable) // nguoi dung khong duoc sua bat ki du lieu nao tren bang
+            return false;
         if(column < 3 || column >= 7)
             return false;
         return true;
+    }
+    
+    public static void setEditable(boolean b) {
+        editable = b;
     }
     
 }

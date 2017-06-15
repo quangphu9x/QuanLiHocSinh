@@ -198,6 +198,7 @@ public class QuanLiMonHoc extends javax.swing.JPanel {
             Main.sqlConnection.closeAllConnection();
             JOptionPane.showMessageDialog(this, "Có lỗi xảy ra");
         }
+        updateSystem();
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void changeNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeNameButtonActionPerformed
@@ -249,7 +250,7 @@ public class QuanLiMonHoc extends javax.swing.JPanel {
             Logger.getLogger(QuanLiMonHoc.class.getName()).log(Level.SEVERE, null, ex);
             Main.sqlConnection.closeAllConnection();
         }
-        
+        updateSystem();
     }//GEN-LAST:event_changeNameButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -258,6 +259,14 @@ public class QuanLiMonHoc extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn môn học để xóa!");
             return;
         }
+        
+        int reply = JOptionPane.showConfirmDialog(this,
+                "Bạn có chắc chắn muốn xóa các môn học đã chọn không?",
+                "Xóa môn học",
+                JOptionPane.YES_NO_OPTION
+        );
+        if(reply == JOptionPane.NO_OPTION)
+            return;
         
         try {
             Connection connection = Main.sqlConnection.getConnection();
@@ -270,12 +279,15 @@ public class QuanLiMonHoc extends javax.swing.JPanel {
                     String subjectID = table.getValueAt(i, 2).toString();
                     String subjectName = table.getValueAt(i, 3).toString();
                     
-                    // xoa mon hoc va bang diem mon hoc
+                    // xoa mon hoc va bang diem mon hoc, giao vien giang day mon hoc
                     statement.executeUpdate(
-                            "DELETE FROM MONHOC WHERE MaMonHoc='" + subjectID + "'");
+                            "DELETE FROM GIANGDAY WHERE MaMonHoc='" + subjectID + "'");
                     
                     statement.executeUpdate(
                             "DELETE FROM BANGDIEMMON WHERE MaMonHoc='" + subjectID + "'");
+                    
+                    statement.executeUpdate(
+                            "DELETE FROM MONHOC WHERE MaMonHoc='" + subjectID + "'");
                     if(!deletedSubject.equals(""))
                         deletedSubject += ", ";
                     deletedSubject += subjectName;
@@ -290,7 +302,7 @@ public class QuanLiMonHoc extends javax.swing.JPanel {
             Logger.getLogger(QuanLiMonHoc.class.getName()).log(Level.SEVERE, null, ex);
             Main.sqlConnection.closeAllConnection();
         }
-            
+        updateSystem();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private boolean subjectExisted(String subjectName, Statement statement) throws SQLException {
@@ -355,7 +367,11 @@ public class QuanLiMonHoc extends javax.swing.JPanel {
         return result;
     }
     
-    
+    private void updateSystem() {
+        Main.baoCaoTongKetMonPanel.initData();
+        Main.nhapBangDiemMonPanel.initData();
+        Main.phanCongGiangDayPanel.initData();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;

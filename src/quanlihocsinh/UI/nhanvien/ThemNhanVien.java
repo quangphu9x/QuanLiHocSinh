@@ -176,6 +176,7 @@ public class ThemNhanVien extends javax.swing.JPanel {
             Logger.getLogger(ThemNhanVien.class.getName()).log(Level.SEVERE, null, ex);
             Main.sqlConnection.closeAllConnection();
         }
+        QuanLiNhanVien.updateSystem();
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void initData() {

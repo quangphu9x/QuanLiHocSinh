@@ -45,7 +45,6 @@ public class TraCuuChiTiet extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -72,13 +71,10 @@ public class TraCuuChiTiet extends javax.swing.JPanel {
         deleteButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255)), "Chi tiết học sinh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {30};
         setLayout(layout);
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setText("Chi tiết học sinh:");
-        add(jLabel1, new java.awt.GridBagConstraints());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setText("Họ Tên:");
@@ -278,7 +274,7 @@ public class TraCuuChiTiet extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.ipady = 4;
         add(saveButton, gridBagConstraints);
@@ -312,7 +308,7 @@ public class TraCuuChiTiet extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
         add(deleteButton, gridBagConstraints);
 
@@ -325,7 +321,7 @@ public class TraCuuChiTiet extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
         add(cancelButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
@@ -432,6 +428,24 @@ public class TraCuuChiTiet extends javax.swing.JPanel {
             m_birthdayComboBox.addItem(Integer.toString(i + 1));
     }
     
+    public void setEditable() {
+        // chi co admin moi co the thay doi thong tin hoc sinh
+        boolean editable = true;
+        if(!Main.user.getStaffType().equals("CV001"))
+            editable = false;
+        
+        nameField.setEditable(editable);
+        sexField.setEditable(editable);
+        d_birthdayComboBox.setEditable(editable);
+        m_birthdayComboBox.setEditable(editable);
+        y_birthdayField.setEditable(editable);
+        addressField.setEditable(editable);
+        emailField.setEditable(editable);
+        saveButton.setVisible(editable);
+        deleteButton.setVisible(editable);
+        cancelButton.setVisible(editable);
+    }
+    
     public void setStudent(Student student) {
         this.student = student;
         loadStudentInfo();
@@ -494,7 +508,6 @@ public class TraCuuChiTiet extends javax.swing.JPanel {
     private javax.swing.JTextField emailField;
     private javax.swing.JTextField gradeField;
     private javax.swing.JTextField idField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

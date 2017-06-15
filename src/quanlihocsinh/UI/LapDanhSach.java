@@ -61,15 +61,6 @@ public class LapDanhSach extends javax.swing.JPanel {
         gradeSelectionField = new javax.swing.JComboBox<>();
         classSelectionField = new javax.swing.JComboBox<>();
         deleteSelectedStudentButton = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        newClassField = new javax.swing.JTextField();
-        addClassButton = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        classToDeleteField = new javax.swing.JComboBox<>();
-        deleteClassButton = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        changedClassNameField = new javax.swing.JTextField();
-        changeClassNameButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         nameSearchField = new javax.swing.JTextField();
         sexSearchField = new javax.swing.JComboBox<>();
@@ -151,49 +142,6 @@ public class LapDanhSach extends javax.swing.JPanel {
         deleteSelectedStudentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteSelectedStudentButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel5.setText("Thêm lớp mới:");
-
-        newClassField.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        newClassField.setToolTipText("Thêm 1 lớp mới vào khối đang chọn");
-
-        addClassButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        addClassButton.setText("Thêm lớp");
-        addClassButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addClassButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel6.setText("Xóa lớp:");
-
-        classToDeleteField.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        classToDeleteField.setToolTipText("Xóa 1 lớp từ khối đang chọn");
-
-        deleteClassButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        deleteClassButton.setText("Xóa lớp");
-        deleteClassButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteClassButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel7.setText("Đổi tên lớp:");
-
-        changedClassNameField.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        changedClassNameField.setText("10A1");
-        changedClassNameField.setToolTipText("Đổi tên lớp đang chọn");
-
-        changeClassNameButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        changeClassNameButton.setText("Lưu tên lớp");
-        changeClassNameButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changeClassNameButtonActionPerformed(evt);
             }
         });
 
@@ -285,27 +233,9 @@ public class LapDanhSach extends javax.swing.JPanel {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(gradeSelectionField, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(newClassField)
-                                    .addComponent(classToDeleteField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(changedClassNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(addClassButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(deleteClassButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(changeClassNameButton))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel1)
+                        .addGap(0, 270, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,28 +274,18 @@ public class LapDanhSach extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(10, 10, 10)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(gradeSelectionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(newClassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addClassButton))
+                    .addComponent(gradeSelectionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(classSelectionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(classToDeleteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteClassButton))
+                    .addComponent(classSelectionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(numOfStudentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(changedClassNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(changeClassNameButton)))
+                    .addComponent(numOfStudentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -389,11 +309,11 @@ public class LapDanhSach extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addSelectedStudentButton)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initData() {
+    public void initData() {
         try {
             Connection connection = Main.sqlConnection.getConnection();
             Statement statement = connection.createStatement();
@@ -401,6 +321,7 @@ public class LapDanhSach extends javax.swing.JPanel {
             studentsToSelect = new ArrayList<>();
             
             // hien thi danh sach khoi
+            gradeSelectionField.removeAllItems();
             ResultSet rs = statement.executeQuery("SELECT KhoiLop FROM KHOI ORDER BY(KhoiLop)");
             while(rs.next())
                 gradeSelectionField.addItem(rs.getString(1));
@@ -421,13 +342,10 @@ public class LapDanhSach extends javax.swing.JPanel {
     
     private void loadClassSelection(String grade, Statement statement) throws SQLException {
         classSelectionField.removeAllItems();
-        classToDeleteField.removeAllItems();
         ResultSet rs = statement.executeQuery(
                 "SELECT TenLop, SiSo FROM LOPHOC WHERE KhoiLop=" + grade + " ORDER BY(TenLop)");
-        while(rs.next()) {
+        while(rs.next())
             classSelectionField.addItem(rs.getString(1));
-            classToDeleteField.addItem(rs.getString(1));
-        }
         rs.first();
         numOfStudentField.setText(rs.getString(2)); //hien thi si so cua lop dau tien
         rs.close();
@@ -505,8 +423,8 @@ public class LapDanhSach extends javax.swing.JPanel {
             rs.close();
             
             // hien thi lop vao o doi ten
-            changedClassNameField.setText(
-                    classSelectionField.getSelectedItem().toString());
+            //changedClassNameField.setText(
+            //        classSelectionField.getSelectedItem().toString());
             
             // hien thi danh sach hoc sinh trong lop
             loadStudentsInClass(statement);
@@ -520,80 +438,6 @@ public class LapDanhSach extends javax.swing.JPanel {
         System.out.println("class selection changed!");
     }//GEN-LAST:event_classSelectionFieldItemStateChanged
     
-    private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
-        String newClassName = newClassField.getText();
-        if(newClassName.equals(""))
-            return;
-        
-        try {
-            Connection connection = Main.sqlConnection.getConnection();
-            Statement statement = connection.createStatement();
-            
-            // kiem tra xem lop hoc da ton tai chua
-            ResultSet rs = statement.executeQuery(
-                    "SELECT MaLop FROM LOPHOC WHERE TenLop='" + newClassName + "'");
-            rs.last();
-            if(rs.getRow() > 0)
-                JOptionPane.showMessageDialog(this, "Lớp học đã tồn tại!");
-            else {
-                String newClassID = generateClassID(statement);
-                String grade = gradeSelectionField.getSelectedItem().toString();
-                statement.executeUpdate(
-                        "INSERT INTO LOPHOC(MaLop, TenLop, KhoiLop) VALUES('"
-                        + newClassID + "', '" + newClassName + "',"
-                        + grade + " )");
-                loadClassSelection(grade, statement);
-                JOptionPane.showMessageDialog(this, "Thêm thành công lớp " + newClassName);
-            }
-            rs.close();
-            connection.close();
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(LapDanhSach.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Có lỗi xảy ra! hãy thử lại.");
-            Main.sqlConnection.closeAllConnection();
-        }
-    }//GEN-LAST:event_addClassButtonActionPerformed
-
-    private void deleteClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteClassButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteClassButtonActionPerformed
-
-    private void changeClassNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeClassNameButtonActionPerformed
-        String newClassName = changedClassNameField.getText();
-        if(newClassName.equals(""))
-            return;
-        
-        Connection connection = null;
-        try {
-            connection = Main.sqlConnection.getConnection();
-            Statement statement = connection.createStatement();
-            
-            // kiem tra xem ten lop da ton tai chua
-            ResultSet rs = statement.executeQuery(
-                    "SELECT MaLop FROM LOPHOC WHERE TenLop='" + newClassName + "'");
-            rs.last();
-            if(rs.getRow() > 0)
-                JOptionPane.showMessageDialog(this, "Tên lớp này đã tồn tại! Hãy chọn tên khác");
-            else {
-                statement.executeUpdate(
-                        "UPDATE LOPHOC SET TenLop='" + newClassName + "' WHERE TenLop='"
-                        + classSelectionField.getSelectedItem().toString() + "'"
-                );
-                loadClassSelection(
-                        gradeSelectionField.getSelectedItem().toString(),
-                        statement
-                );
-                JOptionPane.showMessageDialog(this, "Đổi tên lớp thành công!");
-            }
-            rs.close();
-            connection.close();
-            System.out.println("SQL closed!");
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(LapDanhSach.class.getName()).log(Level.SEVERE, null, ex);
-            Main.sqlConnection.closeAllConnection();
-        }
-    }//GEN-LAST:event_changeClassNameButtonActionPerformed
-
     private void deleteSelectedStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSelectedStudentButtonActionPerformed
         String className = classSelectionField.getSelectedItem().toString();
         int reply = JOptionPane.showConfirmDialog(
@@ -820,14 +664,9 @@ public class LapDanhSach extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addClassButton;
     private javax.swing.JButton addSelectedStudentButton;
     private javax.swing.JTextField addressSearchField;
-    private javax.swing.JButton changeClassNameButton;
-    private javax.swing.JTextField changedClassNameField;
     private javax.swing.JComboBox<String> classSelectionField;
-    private javax.swing.JComboBox<String> classToDeleteField;
-    private javax.swing.JButton deleteClassButton;
     private javax.swing.JButton deleteSelectedStudentButton;
     private javax.swing.JComboBox<String> gradeSelectionField;
     private javax.swing.JLabel jLabel1;
@@ -837,15 +676,11 @@ public class LapDanhSach extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nameSearchField;
-    private javax.swing.JTextField newClassField;
     private javax.swing.JTextField numOfStudentField;
     private javax.swing.JButton searchButton;
     private javax.swing.JComboBox<String> sexSearchField;

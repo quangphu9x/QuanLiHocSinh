@@ -212,6 +212,7 @@ public class SuaThongTinNhanvien extends javax.swing.JPanel {
             Main.sqlConnection.closeAllConnection();
             JOptionPane.showMessageDialog(this, "Có lỗi xảy ra!");
         }
+        QuanLiNhanVien.updateSystem();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

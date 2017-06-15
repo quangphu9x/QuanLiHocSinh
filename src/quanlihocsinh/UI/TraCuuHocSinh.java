@@ -167,13 +167,16 @@ public class TraCuuHocSinh extends javax.swing.JPanel {
                                 .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
-                                .addComponent(searchButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(studentInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 13, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(searchButton)))
+                        .addGap(0, 232, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(studentInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,17 +213,19 @@ public class TraCuuHocSinh extends javax.swing.JPanel {
                 .addComponent(searchButton)
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(studentInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(studentInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initData() {
+    public void initData() {
         try {
             Connection connection = Main.sqlConnection.getConnection();
             Statement statement = connection.createStatement();
             
             // hien thi danh sach khoi
+            gradeComboBox.removeAllItems();
             ResultSet rs = statement.executeQuery("SELECT KhoiLop FROM KHOI ORDER BY(KhoiLop)");
             while(rs.next())
                 gradeComboBox.addItem(rs.getString(1));
@@ -345,7 +350,7 @@ public class TraCuuHocSinh extends javax.swing.JPanel {
         
         if(!grade.equals("Tất cả")) {
             int intValue = Integer.parseInt(grade);
-            whereClause = whereClause + " ANDd KhoiLop=" + intValue;
+            whereClause = whereClause + " AND KhoiLop=" + intValue;
         }
         
         if(!className.equals("Tất cả"))
@@ -360,7 +365,7 @@ public class TraCuuHocSinh extends javax.swing.JPanel {
         if(!address.equals(""))
             whereClause = whereClause + " AND DiaChi LIKE '%" + address + "%'";
         
-        sql = sql + " WHERE" + whereClause + " ORDER BY(HoVaTen)";
+        sql = sql + " WHERE" + whereClause + " ORDER BY HoVaTen";
         return sql;
     }
     
@@ -379,6 +384,10 @@ public class TraCuuHocSinh extends javax.swing.JPanel {
         searchResultTable.setModel(tableModel);
     }
     
+    // cai dat viec cho phep nguoi dung thay doi du lieu
+    public void setEditable() {
+        studentInfoPanel.setEditable();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;

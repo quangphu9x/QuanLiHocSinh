@@ -47,17 +47,17 @@ public class Main extends javax.swing.JFrame {
         menuPanel = new quanlihocsinh.UI.Menu();
         tiepNhanPanel = new quanlihocsinh.UI.TiepNhan();
         lapDanhSachPanel = new quanlihocsinh.UI.LapDanhSach();
-        traCuuHocSinh = new quanlihocsinh.UI.TraCuuHocSinh();
+        traCuuHocSinhPanel = new quanlihocsinh.UI.TraCuuHocSinh();
         nhapBangDiemMonPanel = new quanlihocsinh.UI.NhapBangDiemMon();
         baoCaoTongKetMonPanel = new quanlihocsinh.UI.BaoCaoTongKetMon();
         baoCaoTongKetHocKiPanel = new quanlihocsinh.UI.BaoCaoTongKetHocKi();
         caiDatPanel = new quanlihocsinh.UI.CaiDat();
         sqlSettingsPanel = new quanlihocsinh.UI.SQLSettings();
-        quanLiMonHoc = new quanlihocsinh.UI.QuanLiMonHoc();
-        quanLiNhanVien = new quanlihocsinh.UI.nhanvien.QuanLiNhanVien();
-        phanCongGiangDay = new quanlihocsinh.UI.nhanvien.PhanCongGiangDay();
-        xepGVCN = new quanlihocsinh.UI.nhanvien.XepGVCN();
-        quanLiLopHoc = new quanlihocsinh.UI.QuanLiLopHoc();
+        quanLiMonHocPanel = new quanlihocsinh.UI.QuanLiMonHoc();
+        quanLiNhanVienPanel = new quanlihocsinh.UI.nhanvien.QuanLiNhanVien();
+        phanCongGiangDayPanel = new quanlihocsinh.UI.nhanvien.PhanCongGiangDay();
+        xepGVCNPanel = new quanlihocsinh.UI.nhanvien.XepGVCN();
+        quanLiLopHocPanel = new quanlihocsinh.UI.QuanLiLopHoc();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         SQLSettingMenu = new javax.swing.JMenuItem();
@@ -81,25 +81,33 @@ public class Main extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         loginMenu = new javax.swing.JMenuItem();
         logoutMenu = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        homeMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         mainPanel.setLayout(new java.awt.CardLayout());
         mainPanel.add(dangNhapPanel, "cardDangNhap");
         mainPanel.add(menuPanel, "cardMenu");
         mainPanel.add(tiepNhanPanel, "cardTiepNhan");
         mainPanel.add(lapDanhSachPanel, "cardLapDanhSach");
-        mainPanel.add(traCuuHocSinh, "cardTraCuuHocSinh");
+        mainPanel.add(traCuuHocSinhPanel, "cardTraCuuHocSinh");
         mainPanel.add(nhapBangDiemMonPanel, "cardNhapBangDiemMon");
         mainPanel.add(baoCaoTongKetMonPanel, "cardBaoCaoTongKetMon");
         mainPanel.add(baoCaoTongKetHocKiPanel, "cardBaoCaoTongKetHocKi");
         mainPanel.add(caiDatPanel, "cardCaiDat");
         mainPanel.add(sqlSettingsPanel, "cardSQLSettings");
-        mainPanel.add(quanLiMonHoc, "cardQuanLiMonHoc");
-        mainPanel.add(quanLiNhanVien, "cardQuanLiNhanVien");
-        mainPanel.add(phanCongGiangDay, "cardPhanCongGiangDay");
-        mainPanel.add(xepGVCN, "cardXepGVCN");
-        mainPanel.add(quanLiLopHoc, "cardQuanLiLopHoc");
+        mainPanel.add(quanLiMonHocPanel, "cardQuanLiMonHoc");
+        mainPanel.add(quanLiNhanVienPanel, "cardQuanLiNhanVien");
+        mainPanel.add(phanCongGiangDayPanel, "cardPhanCongGiangDay");
+        mainPanel.add(xepGVCNPanel, "cardXepGVCN");
+        mainPanel.add(quanLiLopHocPanel, "cardQuanLiLopHoc");
 
         jMenu1.setText("Cài đặt");
 
@@ -128,6 +136,7 @@ public class Main extends javax.swing.JFrame {
         jMenu4.setText("Học sinh");
 
         tiepNhanMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tiepNhanMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/new.png"))); // NOI18N
         tiepNhanMenu.setText("Tiếp nhận");
         tiepNhanMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +146,7 @@ public class Main extends javax.swing.JFrame {
         jMenu4.add(tiepNhanMenu);
 
         lapDanhSachLopMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lapDanhSachLopMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/list.png"))); // NOI18N
         lapDanhSachLopMenu.setText("Lập danh sách lớp");
         lapDanhSachLopMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +156,7 @@ public class Main extends javax.swing.JFrame {
         jMenu4.add(lapDanhSachLopMenu);
 
         traCuuMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        traCuuMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         traCuuMenu.setText("Tra cứu");
         traCuuMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +166,7 @@ public class Main extends javax.swing.JFrame {
         jMenu4.add(traCuuMenu);
 
         nhapBangDiemMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        nhapBangDiemMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/table.png"))); // NOI18N
         nhapBangDiemMenu.setText("Nhập bảng điểm môn");
         nhapBangDiemMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +180,7 @@ public class Main extends javax.swing.JFrame {
         jMenu2.setText("Môn học");
 
         subjectManagerMenuItem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        subjectManagerMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/settings2.png"))); // NOI18N
         subjectManagerMenuItem.setText("Quản lí môn học");
         subjectManagerMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +194,7 @@ public class Main extends javax.swing.JFrame {
         jMenu7.setText("Lớp học");
 
         classManagementMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        classManagementMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/settings2.png"))); // NOI18N
         classManagementMenu.setText("Quản lí lớp học");
         classManagementMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +208,7 @@ public class Main extends javax.swing.JFrame {
         jMenu3.setText("Nhân viên");
 
         quanLiNhanVienMeneuItem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        quanLiNhanVienMeneuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/settings2.png"))); // NOI18N
         quanLiNhanVienMeneuItem.setText("Quản lí nhân viên");
         quanLiNhanVienMeneuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +218,7 @@ public class Main extends javax.swing.JFrame {
         jMenu3.add(quanLiNhanVienMeneuItem);
 
         phanCongGiangDayMenuItem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        phanCongGiangDayMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/assign.png"))); // NOI18N
         phanCongGiangDayMenuItem.setText("Phân công giảng dạy");
         phanCongGiangDayMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +228,7 @@ public class Main extends javax.swing.JFrame {
         jMenu3.add(phanCongGiangDayMenuItem);
 
         giaoVienChuNhiemMenuItem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        giaoVienChuNhiemMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/teacher.png"))); // NOI18N
         giaoVienChuNhiemMenuItem.setText("Giáo viên chủ nhiệm");
         giaoVienChuNhiemMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +242,7 @@ public class Main extends javax.swing.JFrame {
         jMenu5.setText("Tổng kết");
 
         menuBaoCaoTongKetMon.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        menuBaoCaoTongKetMon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/report.png"))); // NOI18N
         menuBaoCaoTongKetMon.setText("Báo cáo tổng kết môn");
         menuBaoCaoTongKetMon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,6 +252,7 @@ public class Main extends javax.swing.JFrame {
         jMenu5.add(menuBaoCaoTongKetMon);
 
         menuBaoCaoTongKetHocKi.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        menuBaoCaoTongKetHocKi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/report1.png"))); // NOI18N
         menuBaoCaoTongKetHocKi.setText("Báo cáo tổng kết học kì");
         menuBaoCaoTongKetHocKi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,6 +265,7 @@ public class Main extends javax.swing.JFrame {
 
         jMenu6.setText("Tài khoản");
 
+        loginMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login.png"))); // NOI18N
         loginMenu.setText("Đăng nhập");
         loginMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +274,7 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu6.add(loginMenu);
 
+        logoutMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logout.png"))); // NOI18N
         logoutMenu.setText("Đăng xuất");
         logoutMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,6 +284,30 @@ public class Main extends javax.swing.JFrame {
         jMenu6.add(logoutMenu);
 
         jMenuBar1.add(jMenu6);
+
+        jMenu8.setText("Hệ thống");
+
+        homeMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        homeMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
+        homeMenu.setText("Trang chủ");
+        homeMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuActionPerformed(evt);
+            }
+        });
+        jMenu8.add(homeMenu);
+
+        exitMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        exitMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
+        exitMenu.setText("Thoát");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuActionPerformed(evt);
+            }
+        });
+        jMenu8.add(exitMenu);
+
+        jMenuBar1.add(jMenu8);
 
         setJMenuBar(jMenuBar1);
 
@@ -397,6 +442,18 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logoutMenuActionPerformed
 
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
+        exit();
+    }//GEN-LAST:event_exitMenuActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        exit();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void homeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuActionPerformed
+        showPanel("cardMenu");
+    }//GEN-LAST:event_homeMenuActionPerformed
+
     private boolean checkLogin() {
         if(!user.hasLoggedIn()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa đăng nhập!");
@@ -411,6 +468,24 @@ public class Main extends javax.swing.JFrame {
             return false;
         }
         return true;
+    }
+    
+    private void exit() {
+        int reply = JOptionPane.showConfirmDialog(this,
+                "Bạn có muốn thoát?",
+                "Thoát",
+                JOptionPane.YES_NO_OPTION
+        );
+        if(reply == JOptionPane.YES_OPTION) {
+            sqlConnection.closeAllConnection();
+            System.exit(0);
+        }
+    }
+    
+    // cai dat quyen thay doi du lieu cua nguoi dung len 1 so o du lieu
+    public static void setEditable() {
+        traCuuHocSinhPanel.setEditable();
+        nhapBangDiemMonPanel.setEditable();
     }
     
     /**
@@ -442,12 +517,14 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem SQLSettingMenu;
     private quanlihocsinh.UI.BaoCaoTongKetHocKi baoCaoTongKetHocKiPanel;
-    private quanlihocsinh.UI.BaoCaoTongKetMon baoCaoTongKetMonPanel;
+    public static quanlihocsinh.UI.BaoCaoTongKetMon baoCaoTongKetMonPanel;
     private quanlihocsinh.UI.CaiDat caiDatPanel;
     private javax.swing.JMenuItem changeRegulationMenu;
     private javax.swing.JMenuItem classManagementMenu;
     private quanlihocsinh.UI.DangNhap dangNhapPanel;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenuItem giaoVienChuNhiemMenuItem;
+    private javax.swing.JMenuItem homeMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -455,9 +532,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem lapDanhSachLopMenu;
-    private quanlihocsinh.UI.LapDanhSach lapDanhSachPanel;
+    public static quanlihocsinh.UI.LapDanhSach lapDanhSachPanel;
     private javax.swing.JMenuItem loginMenu;
     private javax.swing.JMenuItem logoutMenu;
     private static javax.swing.JPanel mainPanel;
@@ -465,19 +543,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuBaoCaoTongKetMon;
     private quanlihocsinh.UI.Menu menuPanel;
     private javax.swing.JMenuItem nhapBangDiemMenu;
-    private quanlihocsinh.UI.NhapBangDiemMon nhapBangDiemMonPanel;
-    private quanlihocsinh.UI.nhanvien.PhanCongGiangDay phanCongGiangDay;
+    public static quanlihocsinh.UI.NhapBangDiemMon nhapBangDiemMonPanel;
     private javax.swing.JMenuItem phanCongGiangDayMenuItem;
-    private quanlihocsinh.UI.QuanLiLopHoc quanLiLopHoc;
-    private quanlihocsinh.UI.QuanLiMonHoc quanLiMonHoc;
-    private quanlihocsinh.UI.nhanvien.QuanLiNhanVien quanLiNhanVien;
+    public static quanlihocsinh.UI.nhanvien.PhanCongGiangDay phanCongGiangDayPanel;
+    private quanlihocsinh.UI.QuanLiLopHoc quanLiLopHocPanel;
+    private quanlihocsinh.UI.QuanLiMonHoc quanLiMonHocPanel;
     private javax.swing.JMenuItem quanLiNhanVienMeneuItem;
+    private quanlihocsinh.UI.nhanvien.QuanLiNhanVien quanLiNhanVienPanel;
     private quanlihocsinh.UI.SQLSettings sqlSettingsPanel;
     private javax.swing.JMenuItem subjectManagerMenuItem;
     private javax.swing.JMenuItem tiepNhanMenu;
     private quanlihocsinh.UI.TiepNhan tiepNhanPanel;
-    private quanlihocsinh.UI.TraCuuHocSinh traCuuHocSinh;
+    public static quanlihocsinh.UI.TraCuuHocSinh traCuuHocSinhPanel;
     private javax.swing.JMenuItem traCuuMenu;
-    private quanlihocsinh.UI.nhanvien.XepGVCN xepGVCN;
+    private quanlihocsinh.UI.nhanvien.XepGVCN xepGVCNPanel;
     // End of variables declaration//GEN-END:variables
 }
