@@ -546,7 +546,7 @@ public class Main extends javax.swing.JFrame {
     public static quanlihocsinh.UI.NhapBangDiemMon nhapBangDiemMonPanel;
     private javax.swing.JMenuItem phanCongGiangDayMenuItem;
     public static quanlihocsinh.UI.nhanvien.PhanCongGiangDay phanCongGiangDayPanel;
-    private quanlihocsinh.UI.QuanLiLopHoc quanLiLopHocPanel;
+    public static quanlihocsinh.UI.QuanLiLopHoc quanLiLopHocPanel;
     private quanlihocsinh.UI.QuanLiMonHoc quanLiMonHocPanel;
     private javax.swing.JMenuItem quanLiNhanVienMeneuItem;
     private quanlihocsinh.UI.nhanvien.QuanLiNhanVien quanLiNhanVienPanel;

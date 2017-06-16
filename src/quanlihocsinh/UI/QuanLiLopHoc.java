@@ -343,7 +343,7 @@ public class QuanLiLopHoc extends javax.swing.JPanel {
         updateSystem();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void initData() {
+    public void initData() {
         loadTable();
         try {
             // lay danh sach khoi

@@ -496,11 +496,11 @@ public class LapDanhSach extends javax.swing.JPanel {
                 Main.sqlConnection.closeAllConnection();
             }
         }
+        updateSystem();
     }//GEN-LAST:event_deleteSelectedStudentButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         String sql = createSQLSearch(); // tao cau lenh SQL tim kiem hoc sinh
-        System.out.println(sql);
         try {
             Connection connection = Main.sqlConnection.getConnection();
             Statement statement = connection.createStatement();
@@ -607,6 +607,7 @@ public class LapDanhSach extends javax.swing.JPanel {
             Logger.getLogger(LapDanhSach.class.getName()).log(Level.SEVERE, null, ex);
             Main.sqlConnection.closeAllConnection();
         }
+        updateSystem();
     }//GEN-LAST:event_addSelectedStudentButtonActionPerformed
 
     private void gradeSelectionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeSelectionFieldActionPerformed
@@ -661,6 +662,10 @@ public class LapDanhSach extends javax.swing.JPanel {
                 + whereClause + " ORDER BY(HoVaTen)";
         
         return sql;
+    }
+    
+    private void updateSystem() {
+        Main.quanLiLopHocPanel.initData();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
